@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="GameBananaSdk.SampleApp/GameBananaSdk.SampleApp.csproj" />
+  <Project Path="GameBananaSdk/GameBananaSdk.csproj" />
+</Solution>
