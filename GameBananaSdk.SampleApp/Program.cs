@@ -1,4 +1,5 @@
 ﻿using System.Reflection;
+using GameBananaSdk;
 
 var version = typeof(Program).Assembly
     .GetCustomAttribute<AssemblyInformationalVersionAttribute>()?
@@ -8,3 +9,5 @@ Console.WriteLine($"""
     (c) Arch Leaders. MIT.
 
     """);
+    
+using var client = new GameBananaClient();
