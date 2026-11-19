@@ -11,3 +11,5 @@ Console.WriteLine($"""
     """);
     
 using var client = new GameBananaClient();
+var results = await client.Util.Search.Results.Get("fire");
+Console.WriteLine(results);
