@@ -7,8 +7,27 @@
     <LangVersion>latest</LangVersion>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <PackageId>GameBananaSdk</PackageId>
+    <Authors>ArchLeaders</Authors>
+    <Description>Semi-dynamic SDK for the GameBanana API</Description>
+    <PackageReadmeFile>Readme.md</PackageReadmeFile>
+    <PackageLicenseFile>License.md</PackageLicenseFile>
+    <PackageIcon>Icon.png</PackageIcon>
+    <RepositoryUrl>https://github.com/ArchLeaders/GameBananaSdk</RepositoryUrl>
+  </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="Refit" Version="17.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Visible="false" Pack="true" PackagePath="\"
+          Include="..\..\License.md"/>
+    <None Visible="false" Pack="true" PackagePath="\"
+          Include="..\..\Readme.md"/>
+    <None Visible="false" Pack="true" PackagePath="\"
+          Include="..\..\resources\Icon.png"/>
   </ItemGroup>
 
 </Project>
