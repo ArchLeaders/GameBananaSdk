@@ -9,23 +9,23 @@ namespace GameBananaSdk.QueryBuilders;
 public class SectionQueryBuilder<T>
 {
     private readonly string _modelName;
-    private readonly IEntityApi _entityApi;
+    private readonly ISectionApi _sectionApi;
 
-    internal SectionQueryBuilder(string modelName, IEntityApi entityApi)
+    internal SectionQueryBuilder(string modelName, ISectionApi sectionApi)
     {
         _modelName = modelName;
-        _entityApi = entityApi;
+        _sectionApi = sectionApi;
     }
 
-    public QueryBuilder<T> this[long id] => new(_modelName, id, _entityApi);
+    public QueryBuilder<T> this[long id] => new(_modelName, id, _sectionApi);
 
     public Task<BananaPage<T>> Index(
         int? page = null,
         int? pageSize = null,
         string? sort = null,
         Dictionary<string, string>? filters = null)
-        => _entityApi.Index<T>(_modelName, page, pageSize, sort, filters);
+        => _sectionApi.Index<T>(_modelName, page, pageSize, sort, filters);
 
     public Task<BananaFilterConfig> ListFilterConfig()
-        => _entityApi.ListFilterConfig(_modelName);
+        => _sectionApi.ListFilterConfig(_modelName);
 }

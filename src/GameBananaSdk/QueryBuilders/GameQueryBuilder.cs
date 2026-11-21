@@ -14,7 +14,7 @@ public sealed class GameQueryBuilder : QueryBuilder<BananaGame>
     private readonly long _id;
     private readonly IGameApi _gameApi;
 
-    internal GameQueryBuilder(long id, IGameApi gameApi, IEntityApi entityApi) : base(ModelName, id, entityApi)
+    internal GameQueryBuilder(long id, IGameApi gameApi, ISectionApi sectionApi) : base(ModelName, id, sectionApi)
     {
         _id = id;
         _gameApi = gameApi;

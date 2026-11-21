@@ -9,13 +9,13 @@ namespace GameBananaSdk.QueryBuilders;
 public sealed class GameSectionQueryBuilder : SectionQueryBuilder<BananaGame>
 {
     private readonly IGameApi _gameApi;
-    private readonly IEntityApi _entityApi;
+    private readonly ISectionApi _sectionApi;
 
-    internal GameSectionQueryBuilder(IGameApi gameApi, IEntityApi entityApi) : base("Game", entityApi)
+    internal GameSectionQueryBuilder(IGameApi gameApi, ISectionApi sectionApi) : base("Game", sectionApi)
     {
         _gameApi = gameApi;
-        _entityApi = entityApi;
+        _sectionApi = sectionApi;
     }
 
-    public new GameQueryBuilder this[long id] => new(id, _gameApi, _entityApi);
+    public new GameQueryBuilder this[long id] => new(id, _gameApi, _sectionApi);
 }

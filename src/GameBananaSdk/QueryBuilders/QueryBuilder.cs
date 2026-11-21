@@ -9,9 +9,9 @@ public class QueryBuilder<T>
 {
     private readonly string _modelName;
     private readonly long _id;
-    private readonly IEntityApi _api;
+    private readonly ISectionApi _api;
 
-    internal QueryBuilder(string modelName, long id, IEntityApi api)
+    internal QueryBuilder(string modelName, long id, ISectionApi api)
     {
         _modelName = modelName;
         _id = id;

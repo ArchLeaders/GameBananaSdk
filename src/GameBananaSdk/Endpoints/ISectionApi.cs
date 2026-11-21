@@ -3,7 +3,7 @@ using Refit;
 
 namespace GameBananaSdk.Endpoints;
 
-public interface IEntityApi
+public interface ISectionApi
 {
     [Get("/{modelName}/{id}")]
     Task<T> Get<T>(

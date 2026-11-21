@@ -18,13 +18,17 @@ public record BananaObject : BananaItem
         Element = element;
     }
     
-    public string? GetString(string propertyName) => _fields[ToBananaPropertyName(propertyName, "s")].GetString();
+    public string? GetString(string propertyName)
+        => _fields[ToBananaPropertyName(propertyName, "s")].GetString();
     
-    public int GetNumber(string propertyName) => _fields[ToBananaPropertyName(propertyName, "n")].GetInt32();
+    public int GetNumber(string propertyName)
+        => _fields[ToBananaPropertyName(propertyName, "n")].GetInt32();
     
-    public bool GetBool(string propertyName) => _fields[ToBananaPropertyName(propertyName, "b")].GetBoolean();
+    public bool GetBool(string propertyName)
+        => _fields[ToBananaPropertyName(propertyName, "b")].GetBoolean();
     
-    public T? Get<T>(string propertyName, JsonTypeInfo<T> typeInfo) => _fields[ToBananaPropertyName(propertyName, "a")].Deserialize(typeInfo);
+    public T? Get<T>(string propertyName, JsonTypeInfo<T> typeInfo)
+        => _fields[ToBananaPropertyName(propertyName, "a")].Deserialize(typeInfo);
     
     public DateTimeOffset? GetTimestamp(string propertyName)
         => DateTimeOffset.FromUnixTimeSeconds(_fields[ToBananaPropertyName(propertyName, "ts")].GetInt64());
