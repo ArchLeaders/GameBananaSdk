@@ -27,7 +27,10 @@ public record BananaObject : BananaItem
     public bool GetBool(string propertyName)
         => _fields[ToBananaPropertyName(propertyName, "b")].GetBoolean();
     
-    public T? Get<T>(string propertyName, JsonTypeInfo<T> typeInfo)
+    public BananaObject? Get(string propertyName)
+        => _fields[ToBananaPropertyName(propertyName, "a")].Deserialize(SdkJsonContext.Default.BananaObject);
+    
+    public T? GetAs<T>(string propertyName, JsonTypeInfo<T> typeInfo)
         => _fields[ToBananaPropertyName(propertyName, "a")].Deserialize(typeInfo);
     
     public DateTimeOffset? GetTimestamp(string propertyName)
