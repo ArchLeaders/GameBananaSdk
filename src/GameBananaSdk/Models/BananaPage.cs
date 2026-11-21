@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 
 namespace GameBananaSdk.Models;
 
-public record BananaPage<TRecord> where TRecord : BananaItem
+public record BananaPage<TRecord>
 {
     [JsonPropertyName("_aMetadata")]
     public required BananaPageMetadata Metadata { get; set; }

@@ -4,7 +4,10 @@ using GameBananaSdk.Models;
 
 namespace GameBananaSdk.QueryBuilders;
 
-public sealed class GameQueryBuilder : EntityQueryBuilder<BananaGame>
+/// <summary>
+/// Contains endpoints for an identified <see cref="BananaGame"/>
+/// </summary>
+public sealed class GameQueryBuilder : QueryBuilder<BananaGame>
 {
     private const string ModelName = "Game";
 
@@ -20,7 +23,7 @@ public sealed class GameQueryBuilder : EntityQueryBuilder<BananaGame>
     public Task<BananaCommunitySpotlight> GetCommunitySpotlight()
         => _gameApi.GetCommunitySpotlight(_id);
 
-    public Task<BananaPage<BananaSubmission>> GetSubmissionFeed(
+    public Task<BananaPage<BananaObject>> GetSubmissionFeed(
         int? page = null, int? pageSize = null,
         string? searchTerm = null, string? sort = null,
         string? modelInclusions = null, string? modelExclusions = null,
@@ -28,6 +31,6 @@ public sealed class GameQueryBuilder : EntityQueryBuilder<BananaGame>
         => _gameApi.GetSubmissionFeed(_id, page, pageSize, searchTerm, sort,
             modelInclusions, modelExclusions, tagInclusions, tagExclusions);
 
-    public Task<ImmutableList<BananaSubmission>> GetTopSubmissions()
+    public Task<ImmutableList<BananaObject>> GetTopSubmissions()
         => _gameApi.GetTopSubmissions(_id);
 }

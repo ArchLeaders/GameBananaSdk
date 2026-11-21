@@ -7,7 +7,7 @@ namespace GameBananaSdk.Endpoints;
 public interface IGameApi
 {
     [Get("/Game/{id}/Subfeed")]
-    Task<BananaPage<BananaSubmission>> GetSubmissionFeed(
+    Task<BananaPage<BananaObject>> GetSubmissionFeed(
         long id,
         [Query(Name = "_nPage")] int? page = null,
         [Query(Name = "_nPerpage")] int? pageSize = null,
@@ -19,7 +19,7 @@ public interface IGameApi
         [Query(Name = "_csvTagExclusions")] string? tagExclusions = null);
 
     [Get("/Game/{id}/TopSubs")]
-    Task<ImmutableList<BananaSubmission>> GetTopSubmissions(long id);
+    Task<ImmutableList<BananaObject>> GetTopSubmissions(long id);
 
     [Get("/Game/{id}/CommunitySpotlight")]
     Task<BananaCommunitySpotlight> GetCommunitySpotlight(long id);

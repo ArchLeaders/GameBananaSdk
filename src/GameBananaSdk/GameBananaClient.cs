@@ -1,6 +1,6 @@
-using GameBananaSdk.Clients;
 using GameBananaSdk.Endpoints;
 using GameBananaSdk.Models;
+using GameBananaSdk.QueryBuilders;
 using Refit;
 
 namespace GameBananaSdk;
@@ -13,9 +13,13 @@ public sealed class GameBananaClient : IDisposable
 
     private IGameApi GameApi => field ??= RestService.ForGenerated<IGameApi>(_client, SdkJsonContext.Default);
     
-    public GameClient Games => field ??= new GameClient(GameApi, EntityApi);
+    public GameSectionQueryBuilder Games => field ??= new GameSectionQueryBuilder(GameApi, EntityApi);
     
-    public EntityClient<BananaMod> Mods => field ??= new EntityClient<BananaMod>("Mod", EntityApi);
+    public SectionQueryBuilder<BananaMod> Mods => field ??= new SectionQueryBuilder<BananaMod>("Mod", EntityApi);
+    
+    public SectionQueryBuilder<BananaObject> Query(string modelName) => new(modelName, EntityApi);
+    
+    public SectionQueryBuilder<T> QueryFor<T>(string modelName) => new(modelName, EntityApi);
 
     public void Dispose()
     {
