@@ -12,6 +12,7 @@ namespace GameBananaSdk;
 [JsonSerializable(typeof(BananaPage<BananaGame>))]
 [JsonSerializable(typeof(BananaPage<BananaMod>))]
 [JsonSerializable(typeof(BananaPage<BananaObject>))]
+[JsonSerializable(typeof(BananaPage<BananaTag>))]
 [JsonSerializable(typeof(ImmutableDictionary<int, string>))]
 [JsonSerializable(typeof(ImmutableDictionary<string, ImmutableList<BananaGame>>))]
 [JsonSerializable(typeof(ImmutableDictionary<string, JsonElement>))]

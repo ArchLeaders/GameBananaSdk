@@ -11,4 +11,7 @@ public class UtilGenericQueryBuilder
     
     public IUtil_Generic_DiscussionsApi Discussions
         => field ??= RestService.ForGenerated<IUtil_Generic_DiscussionsApi>(_client, SdkJsonContext.Default);
+    
+    public IUtil_Generic_TagsApi Tags
+        => field ??= RestService.ForGenerated<IUtil_Generic_TagsApi>(_client, SdkJsonContext.Default);
 }
