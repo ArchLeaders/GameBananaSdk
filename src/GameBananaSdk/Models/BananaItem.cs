@@ -1,5 +1,3 @@
-using System.Text.Json.Serialization;
-
 namespace GameBananaSdk.Models;
 
 public record BananaItem
