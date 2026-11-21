@@ -19,9 +19,11 @@ public sealed class GameBananaClient(string baseUrl = "https://gamebanana.com/ap
     
     public SectionQueryBuilder<BananaMod> Mods => field ??= new SectionQueryBuilder<BananaMod>("Mod", SectionApi);
     
-    public SectionQueryBuilder<BananaObject> Query(string modelName) => new(modelName, SectionApi);
+    public SectionQueryBuilder<BananaObject> Query(string modelName)
+        => new(modelName, SectionApi);
     
-    public SectionQueryBuilder<T> QueryFor<T>(string modelName) => new(modelName, SectionApi);
+    public SectionQueryBuilder<T> QueryFor<T>(string modelName, JsonSerializerContext context)
+        => new(modelName, RestService.ForGenerated<ISectionApi>(_client, context));
 
     public void Dispose()
     {
