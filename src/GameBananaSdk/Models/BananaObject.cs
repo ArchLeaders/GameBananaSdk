@@ -6,13 +6,16 @@ using GameBananaSdk.Converters;
 namespace GameBananaSdk.Models;
 
 [JsonConverter(typeof(JsonBananaSubmissionConverter))]
-public record BananaSubmission : BananaItem
+public record BananaObject : BananaItem
 {
     private readonly ImmutableDictionary<string, JsonElement> _fields;
+    
+    public JsonElement Element { get; }
 
-    internal BananaSubmission(ImmutableDictionary<string, JsonElement> fields)
+    internal BananaObject(JsonElement element)
     {
-        _fields = fields;
+        _fields = element.Deserialize<ImmutableDictionary<string, JsonElement>>(SdkJsonContext.Default.ImmutableDictionaryStringJsonElement) ?? [];
+        Element = element;
     }
     
     public string? GetString(string propertyName) => _fields[ToBananaPropertyName(propertyName, "s")].GetString();

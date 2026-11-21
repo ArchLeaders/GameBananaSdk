@@ -1,19 +1,17 @@
-using System.Collections.Immutable;
 using System.Text.Json;
 using GameBananaSdk.Models;
 
 namespace GameBananaSdk.Converters;
 
-public sealed class JsonBananaSubmissionConverter : JsonConverter<BananaSubmission>
+public sealed class JsonBananaSubmissionConverter : JsonConverter<BananaObject>
 {
-    public override BananaSubmission? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+    public override BananaObject? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
     {
-        return new BananaSubmission(
-            JsonSerializer.Deserialize<ImmutableDictionary<string, JsonElement>>(ref reader,
-            SdkJsonContext.Default.ImmutableDictionaryStringJsonElement) ?? []);
+        using var document = JsonDocument.ParseValue(ref reader);
+        return new BananaObject(document.RootElement.Clone());
     }
 
-    public override void Write(Utf8JsonWriter writer, BananaSubmission value, JsonSerializerOptions options)
+    public override void Write(Utf8JsonWriter writer, BananaObject value, JsonSerializerOptions options)
     {
         throw new NotSupportedException();
     }
