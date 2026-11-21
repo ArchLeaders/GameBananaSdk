@@ -39,9 +39,7 @@ jobs:
       - name: Build
         shell: bash
         run: |-
-          dotnet build src/${{ matrix.config.name }}/${{ matrix.config.name }}.csproj \
-          --no-restore                                                                \
-          -c Release                                                                  \
+          dotnet build src/${{ matrix.config.name }}/${{ matrix.config.name }}.csproj --no-restore -c Release
       
       - name: Fetch Version
         id: version
@@ -51,10 +49,8 @@ jobs:
         shell: bash
         run: |
           dotnet pack src/${{ matrix.config.name }}/${{ matrix.config.name }}.csproj \
-          --no-restore                                                               \
-          -c Release                                                                 \
-          -o ./build-output/                                                         \
-          -p:PackageVersion="${{ steps.version.outputs.version-without-v }}"         \
+          --no-restore -c Release \
+          -o ./build-output/ -p:PackageVersion="${{ steps.version.outputs.version-without-v }}"
       
       - name: NuGet login (OIDC → temp API key)
         uses: NuGet/login@v1
