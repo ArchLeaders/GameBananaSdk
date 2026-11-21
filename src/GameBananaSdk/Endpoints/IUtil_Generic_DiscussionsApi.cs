@@ -3,7 +3,7 @@ using Refit;
 
 namespace GameBananaSdk.Endpoints;
 
-public interface IUtil_List_DiscussionsApi
+public interface IUtil_Generic_DiscussionsApi
 {
     [Get("/Util/Generic/Discussions")]
     Task<BananaPage<BananaDiscussion>> Get(
@@ -12,6 +12,5 @@ public interface IUtil_List_DiscussionsApi
         [Query(Name = "_sModelName")] string? modelName = null,
         [Query(Name = "_idStudioRow")] long? studioId = null,
         [Query(Name = "_idMemberRow")] long? memberId = null,
-        [Query(Name = "_idGameRow")] long? gameId = null
-    );
+        [Query(Name = "_idGameRow")] long? gameId = null);
 }

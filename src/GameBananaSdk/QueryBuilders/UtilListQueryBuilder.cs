@@ -11,7 +11,4 @@ public class UtilListQueryBuilder
     
     public IUtil_List_FeaturedApi Featured
         => field ??= RestService.ForGenerated<IUtil_List_FeaturedApi>(_client, SdkJsonContext.Default);
-    
-    public IUtil_List_DiscussionsApi Discussions
-        => field ??= RestService.ForGenerated<IUtil_List_DiscussionsApi>(_client, SdkJsonContext.Default);
 }
