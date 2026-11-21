@@ -5,9 +5,9 @@ using Refit;
 
 namespace GameBananaSdk;
 
-public sealed class GameBananaClient : IDisposable
+public sealed class GameBananaClient(string baseUrl = "https://gamebanana.com/apiv13") : IDisposable
 {
-    private readonly HttpClient _client = RestService.CreateHttpClient("https://gamebanana.com/apiv11", new RefitSettings());
+    private readonly HttpClient _client = RestService.CreateHttpClient(baseUrl, new RefitSettings());
     
     private IEntityApi EntityApi => field ??= RestService.ForGenerated<IEntityApi>(_client, SdkJsonContext.Default);
 
