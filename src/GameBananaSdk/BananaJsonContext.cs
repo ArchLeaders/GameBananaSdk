@@ -18,4 +18,4 @@ namespace GameBananaSdk;
 [JsonSerializable(typeof(ImmutableDictionary<string, JsonElement>))]
 [JsonSerializable(typeof(ImmutableList<BananaObject>))]
 [JsonSerializable(typeof(ImmutableList<string>))]
-internal sealed partial class SdkJsonContext : JsonSerializerContext;
+public sealed partial class BananaJsonContext : JsonSerializerContext;

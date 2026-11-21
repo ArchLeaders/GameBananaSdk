@@ -10,5 +10,5 @@ public class UtilListQueryBuilder
     internal UtilListQueryBuilder(HttpClient client) => _client = client;
     
     public IUtil_List_FeaturedApi Featured
-        => field ??= RestService.ForGenerated<IUtil_List_FeaturedApi>(_client, SdkJsonContext.Default);
+        => field ??= RestService.ForGenerated<IUtil_List_FeaturedApi>(_client, BananaJsonContext.Default);
 }

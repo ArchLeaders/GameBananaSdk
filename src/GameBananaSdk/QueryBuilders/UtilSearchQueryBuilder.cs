@@ -11,13 +11,13 @@ public sealed class UtilSearchQueryBuilder
     internal UtilSearchQueryBuilder(HttpClient client) => _client = client;
 
     private IUtil_Search_ResultsApi Results
-        => field ??= RestService.ForGenerated<IUtil_Search_ResultsApi>(_client, SdkJsonContext.Default);
+        => field ??= RestService.ForGenerated<IUtil_Search_ResultsApi>(_client, BananaJsonContext.Default);
 
     public IUtil_Search_GamesApi Games
-        => field ??= RestService.ForGenerated<IUtil_Search_GamesApi>(_client, SdkJsonContext.Default);
+        => field ??= RestService.ForGenerated<IUtil_Search_GamesApi>(_client, BananaJsonContext.Default);
 
     public IUtil_Search_SuggestionsApi Suggestions
-        => field ??= RestService.ForGenerated<IUtil_Search_SuggestionsApi>(_client, SdkJsonContext.Default);
+        => field ??= RestService.ForGenerated<IUtil_Search_SuggestionsApi>(_client, BananaJsonContext.Default);
 
     public Task<BananaPage<BananaObject>> Get(string searchTerm,
         int? page = null, int? pageSize = null,

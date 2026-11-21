@@ -9,9 +9,9 @@ public sealed class GameBananaClient(string baseUrl = "https://gamebanana.com/ap
 {
     private readonly HttpClient _client = RestService.CreateHttpClient(baseUrl, new RefitSettings());
     
-    private ISectionApi SectionApi => field ??= RestService.ForGenerated<ISectionApi>(_client, SdkJsonContext.Default);
+    private ISectionApi SectionApi => field ??= RestService.ForGenerated<ISectionApi>(_client, BananaJsonContext.Default);
 
-    private IGameApi GameApi => field ??= RestService.ForGenerated<IGameApi>(_client, SdkJsonContext.Default);
+    private IGameApi GameApi => field ??= RestService.ForGenerated<IGameApi>(_client, BananaJsonContext.Default);
     
     public UtilQueryBuilder Util => field ??= new UtilQueryBuilder(_client);
     

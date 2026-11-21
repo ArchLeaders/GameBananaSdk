@@ -10,5 +10,5 @@ public sealed class UtilConfigQueryBuilder
     internal UtilConfigQueryBuilder(HttpClient client) => _client = client;
 
     public IUtil_Config_TrashReasonsApi TrashReasons
-        => field ??= RestService.ForGenerated<IUtil_Config_TrashReasonsApi>(_client, SdkJsonContext.Default);
+        => field ??= RestService.ForGenerated<IUtil_Config_TrashReasonsApi>(_client, BananaJsonContext.Default);
 }

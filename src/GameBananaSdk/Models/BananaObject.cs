@@ -14,7 +14,7 @@ public record BananaObject : BananaItem
 
     internal BananaObject(JsonElement element)
     {
-        _fields = element.Deserialize<ImmutableDictionary<string, JsonElement>>(SdkJsonContext.Default.ImmutableDictionaryStringJsonElement) ?? [];
+        _fields = element.Deserialize<ImmutableDictionary<string, JsonElement>>(BananaJsonContext.Default.ImmutableDictionaryStringJsonElement) ?? [];
         Element = element;
     }
     
@@ -28,7 +28,7 @@ public record BananaObject : BananaItem
         => _fields[ToBananaPropertyName(propertyName, "b")].GetBoolean();
     
     public BananaObject? Get(string propertyName)
-        => _fields[ToBananaPropertyName(propertyName, "a")].Deserialize(SdkJsonContext.Default.BananaObject);
+        => _fields[ToBananaPropertyName(propertyName, "a")].Deserialize(BananaJsonContext.Default.BananaObject);
     
     public T? GetAs<T>(string propertyName, JsonTypeInfo<T> typeInfo)
         => _fields[ToBananaPropertyName(propertyName, "a")].Deserialize(typeInfo);

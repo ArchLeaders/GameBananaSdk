@@ -10,8 +10,8 @@ public class UtilGenericQueryBuilder
     internal UtilGenericQueryBuilder(HttpClient client) => _client = client;
     
     public IUtil_Generic_DiscussionsApi Discussions
-        => field ??= RestService.ForGenerated<IUtil_Generic_DiscussionsApi>(_client, SdkJsonContext.Default);
+        => field ??= RestService.ForGenerated<IUtil_Generic_DiscussionsApi>(_client, BananaJsonContext.Default);
     
     public IUtil_Generic_TagsApi Tags
-        => field ??= RestService.ForGenerated<IUtil_Generic_TagsApi>(_client, SdkJsonContext.Default);
+        => field ??= RestService.ForGenerated<IUtil_Generic_TagsApi>(_client, BananaJsonContext.Default);
 }
