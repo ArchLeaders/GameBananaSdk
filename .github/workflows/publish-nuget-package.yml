@@ -36,16 +36,16 @@ jobs:
         run: |-
           dotnet restore src/${{ matrix.config.name }}/${{ matrix.config.name }}.csproj
           
-          - name: Build
-            shell: bash
-            run: |-
-              dotnet build src/${{ matrix.config.name }}/${{ matrix.config.name }}.csproj \
-              --no-restore                                                                \
-              -c Release                                                                  \
-          
-          - name: Fetch Version
-            id: version
-            uses: battila7/get-version-action@v2
+      - name: Build
+        shell: bash
+        run: |-
+          dotnet build src/${{ matrix.config.name }}/${{ matrix.config.name }}.csproj \
+          --no-restore                                                                \
+          -c Release                                                                  \
+      
+      - name: Fetch Version
+        id: version
+        uses: battila7/get-version-action@v2
 
       - name: Package
         shell: bash
