@@ -13,6 +13,8 @@ public sealed class GameBananaClient(string baseUrl = "https://gamebanana.com/ap
 
     private IGameApi GameApi => field ??= RestService.ForGenerated<IGameApi>(_client, SdkJsonContext.Default);
     
+    public UtilQueryBuilder Util => field ??= new UtilQueryBuilder(_client);
+    
     public GameSectionQueryBuilder Games => field ??= new GameSectionQueryBuilder(GameApi, SectionApi);
     
     public SectionQueryBuilder<BananaMod> Mods => field ??= new SectionQueryBuilder<BananaMod>("Mod", SectionApi);
