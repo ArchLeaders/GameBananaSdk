@@ -19,6 +19,8 @@ public sealed class GameBananaClient(string baseUrl = "https://gamebanana.com/ap
     
     public SectionQueryBuilder<BananaMod> Mods => field ??= new SectionQueryBuilder<BananaMod>("Mod", SectionApi);
     
+    public FileSectionQueryBuilder Files => field ??= new FileSectionQueryBuilder(SectionApi);
+
     public SectionQueryBuilder<BananaObject> Query(string modelName)
         => new(modelName, SectionApi);
     

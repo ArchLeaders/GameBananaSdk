@@ -35,3 +35,6 @@ do {
 
 var filterConfig = await client.Mods.ListFilterConfig();
 Console.WriteLine(filterConfig);
+
+var file = await client.Files[32].Get("_sName");
+Console.WriteLine(file);
