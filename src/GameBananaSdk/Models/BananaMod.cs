@@ -45,6 +45,12 @@ public sealed record BananaMod : BananaItem
     [JsonPropertyName("_sName")]
     public string? Name { get; set; }
 
+    [JsonPropertyName("_sText")]
+    public string? Text { get; set; }
+
+    [JsonPropertyName("_sDescription")]
+    public string? Description { get; set; }
+
     [JsonPropertyName("_bIsNsfw")]
     public bool? IsNsfw { get; set; }
 
