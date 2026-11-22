@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System.Diagnostics;
+using System.Reflection;
 using GameBananaSdk;
 using GameBananaSdk.Components;
 using GameBananaSdk.Models;
@@ -36,5 +37,27 @@ do {
 var filterConfig = await client.Mods.ListFilterConfig();
 Console.WriteLine(filterConfig);
 
-var file = await client.Files[32].Get("_sName");
+var file = await client.Files[1898743].Get("_sName");
 Console.WriteLine(file);
+
+IProgress<double> progress = new Progress<double>(progress => {
+    Console.WriteLine($"\rDownloading: {progress:F1}%    ");
+});
+
+await using var stream = await client.Files[1898743].Download();
+await using var fs = File.Create(file.File ?? "unknown.zip");
+
+var buffer = new byte[8192];
+long totalBytesRead = 0;
+int bytesRead;
+
+while ((bytesRead = await stream.ReadAsync(buffer)) > 0)
+{
+    await fs.WriteAsync(buffer.AsMemory(0, bytesRead));
+    totalBytesRead += bytesRead;
+
+    if (file.Filesize is { } fileSize) {
+        double percentage = (double)totalBytesRead / fileSize * 100;
+        progress.Report(percentage);
+    }
+}
